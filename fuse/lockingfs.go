@@ -17,7 +17,7 @@ type lockingRawFileSystem struct {
 	lock  sync.Mutex
 }
 
-// Returns a Wrap
+// NewLockingRawFileSystem returns a Wrap
 func NewLockingRawFileSystem(fs RawFileSystem) RawFileSystem {
 	return &lockingRawFileSystem{
 		RawFS: fs,

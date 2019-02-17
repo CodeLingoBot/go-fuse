@@ -17,7 +17,7 @@ import (
 	"github.com/hanwen/go-fuse/fuse"
 )
 
-// Returns the RawFileSystem so it can be mounted.
+// RawFS returns the RawFileSystem so it can be mounted.
 func (c *FileSystemConnector) RawFS() fuse.RawFileSystem {
 	return (*rawBridge)(c)
 }

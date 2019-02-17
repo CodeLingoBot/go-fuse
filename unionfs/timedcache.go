@@ -33,7 +33,7 @@ type TimedCache struct {
 	PurgeTimer *time.Timer
 }
 
-// Creates a new cache with the given TTL.  If TTL <= 0, the caching is
+// NewTimedCache: Creates a new cache with the given TTL.  If TTL <= 0, the caching is
 // indefinite.
 func NewTimedCache(fetcher TimedCacheFetcher, ttl time.Duration) *TimedCache {
 	l := new(TimedCache)
@@ -80,7 +80,7 @@ func (c *TimedCache) GetFresh(name string) interface{} {
 	return data
 }
 
-// Drop all expired entries.
+// Purge: Drop all expired entries.
 func (c *TimedCache) Purge() {
 	keys := make([]string, 0, len(c.cacheMap))
 	now := time.Now()

@@ -295,7 +295,7 @@ func (fs *autoUnionFs) Unlink(path string, context *fuse.Context) (code fuse.Sta
 	return code
 }
 
-// Must define this, because ENOSYS will suspend all GetXAttr calls.
+// GetXAttr: Must define this, because ENOSYS will suspend all GetXAttr calls.
 func (fs *autoUnionFs) GetXAttr(name string, attr string, context *fuse.Context) ([]byte, fuse.Status) {
 	return nil, fuse.ENOATTR
 }

@@ -22,7 +22,7 @@ type defaultFileSystem struct{}
 
 func (fs *defaultFileSystem) SetDebug(debug bool) {}
 
-// defaultFileSystem
+// GetAttr: defaultFileSystem
 func (fs *defaultFileSystem) GetAttr(name string, context *fuse.Context) (*fuse.Attr, fuse.Status) {
 	return nil, fuse.ENOSYS
 }

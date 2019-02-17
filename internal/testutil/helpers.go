@@ -12,7 +12,7 @@ import (
 	"github.com/hanwen/go-fuse/fuse"
 )
 
-// Check that loopback Utimens() works as expected.
+// TestLoopbackUtimens checks that loopback Utimens() works as expected.
 // Called by TestLoopbackFileUtimens and TestLoopbackFileSystemUtimens.
 //
 // Parameters:

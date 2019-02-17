@@ -21,7 +21,7 @@ type loopbackFileSystem struct {
 	Root string
 }
 
-// A FUSE filesystem that shunts all request to an underlying file
+// NewLoopbackFileSystem: A FUSE filesystem that shunts all request to an underlying file
 // system.  Its main purpose is to provide test coverage without
 // having to build a synthetic filesystem.
 func NewLoopbackFileSystem(root string) FileSystem {
@@ -151,7 +151,7 @@ func (fs *loopbackFileSystem) Mkdir(path string, mode uint32, context *fuse.Cont
 	return fuse.ToStatus(os.Mkdir(fs.GetPath(path), os.FileMode(mode)))
 }
 
-// Don't use os.Remove, it removes twice (unlink followed by rmdir).
+// Unlink: Don't use os.Remove, it removes twice (unlink followed by rmdir).
 func (fs *loopbackFileSystem) Unlink(name string, context *fuse.Context) (code fuse.Status) {
 	return fuse.ToStatus(syscall.Unlink(fs.GetPath(name)))
 }

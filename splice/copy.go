@@ -36,7 +36,7 @@ func SpliceCopy(dst *os.File, src *os.File, p *Pair) (int64, error) {
 	return total, nil
 }
 
-// Argument ordering follows io.Copy.
+// CopyFile: Argument ordering follows io.Copy.
 func CopyFile(dstName string, srcName string, mode int) error {
 	src, err := os.Open(srcName)
 	if err != nil {

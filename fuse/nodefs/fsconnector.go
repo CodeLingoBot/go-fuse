@@ -171,12 +171,12 @@ func (c *FileSystemConnector) forgetUpdate(nodeID uint64, forgetCount int) {
 	c.verify()
 }
 
-// InodeCount returns the number of inodes registered with the kernel.
+// InodeHandleCount returns the number of inodes registered with the kernel.
 func (c *FileSystemConnector) InodeHandleCount() int {
 	return c.inodeMap.Count()
 }
 
-// Finds a node within the currently known inodes, returns the last
+// Node: Finds a node within the currently known inodes, returns the last
 // known node and the remaining unknown path components.  If parent is
 // nil, start from FUSE mountpoint.
 func (c *FileSystemConnector) Node(parent *Inode, fullPath string) (*Inode, []string) {
@@ -217,7 +217,7 @@ func (c *FileSystemConnector) Node(parent *Inode, fullPath string) (*Inode, []st
 	return node, nil
 }
 
-// Follows the path from the given parent, doing lookups as
+// LookupNode: Follows the path from the given parent, doing lookups as
 // necessary. The path should be '/' separated without leading slash.
 func (c *FileSystemConnector) LookupNode(parent *Inode, path string) *Inode {
 	if path == "" {
@@ -247,7 +247,7 @@ func (c *FileSystemConnector) mountRoot(opts *Options) {
 	c.verify()
 }
 
-// Mount() generates a synthetic directory node, and mounts the file
+// Mount: Mount generates a synthetic directory node, and mounts the file
 // system there.  If opts is nil, the mount options of the root file
 // system are inherited.  The encompassing filesystem should pretend
 // the mount point does not exist.
@@ -290,7 +290,7 @@ func (c *FileSystemConnector) lockMount(parent *Inode, name string, root Node, o
 	return node, fuse.OK
 }
 
-// Unmount() tries to unmount the given inode.  It returns EINVAL if the
+// Unmount: Unmount tries to unmount the given inode.  It returns EINVAL if the
 // path does not exist, or is not a mount point, and EBUSY if there
 // are open files or submounts below this node.
 func (c *FileSystemConnector) Unmount(node *Inode) fuse.Status {

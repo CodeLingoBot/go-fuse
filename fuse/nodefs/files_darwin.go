@@ -78,7 +78,7 @@ func timeToTimeval(t *time.Time) syscall.Timeval {
 	return tv
 }
 
-// MacOS before High Sierra lacks utimensat() and UTIME_OMIT.
+// Utimens: MacOS before High Sierra lacks utimensat() and UTIME_OMIT.
 // We emulate using utimes() and extra GetAttr() calls.
 func (f *loopbackFile) Utimens(a *time.Time, m *time.Time) fuse.Status {
 	var attr fuse.Attr

@@ -94,7 +94,7 @@ func (f *devNullFile) Truncate(size uint64) (code fuse.Status) {
 
 ////////////////
 
-// LoopbackFile delegates all operations back to an underlying os.File.
+// NewLoopbackFile: delegates all operations back to an underlying os.File.
 func NewLoopbackFile(f *os.File) File {
 	return &loopbackFile{File: f}
 }

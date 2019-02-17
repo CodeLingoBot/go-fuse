@@ -59,14 +59,14 @@ func newInode(isDir bool, fsNode Node) *Inode {
 
 // public methods.
 
-// Print the inode. The default print method may not be used for
+// String: Print the inode. The default print method may not be used for
 // debugging, as dumping the map requires synchronization.
 func (n *Inode) String() string {
 
 	return fmt.Sprintf("node{%d}", n.handled.handle)
 }
 
-// Returns any open file, preferably a r/w one.
+// AnyFile returns any open file, preferably a r/w one.
 func (n *Inode) AnyFile() (file File) {
 	n.openFilesMutex.Lock()
 	for _, f := range n.openFiles {
@@ -126,7 +126,7 @@ func (n *Inode) Node() Node {
 	return n.fsInode
 }
 
-// Files() returns an opens file that have bits in common with the
+// Files: Files returns an opens file that have bits in common with the
 // give mask.  Use mask==0 to return all files.
 func (n *Inode) Files(mask uint32) (files []WithFlags) {
 	n.openFilesMutex.Lock()

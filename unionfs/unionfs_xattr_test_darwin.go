@@ -9,7 +9,7 @@ import (
 	"unsafe"
 )
 
-// Darwin doesn't have support for syscall.Getxattr() so we pull it into its own file and implement it by hand on Darwin.
+// Getxattr: Darwin doesn't have support for syscall.Getxattr() so we pull it into its own file and implement it by hand on Darwin.
 func Getxattr(path string, attr string, dest []byte) (sz int, err error) {
 	var _p0 *byte
 	_p0, err = syscall.BytePtrFromString(path)

@@ -76,7 +76,7 @@ func (fs *PathNodeFs) ForgetClientInodes() {
 	fs.pathLock.Unlock()
 }
 
-// Rereads all inode numbers for all known files.
+// RereadClientInodes: Rereads all inode numbers for all known files.
 func (fs *PathNodeFs) RereadClientInodes() {
 	if !fs.options.ClientInodes {
 		return
@@ -90,7 +90,7 @@ func (fs *PathNodeFs) UnmountNode(node *nodefs.Inode) fuse.Status {
 	return fs.connector.Unmount(node)
 }
 
-// UnmountNode unmounts the node filesystem with the given root.
+// Unmount: Unmount unmounts the node filesystem with the given root.
 func (fs *PathNodeFs) Unmount(path string) fuse.Status {
 	node := fs.Node(path)
 	if node == nil {
@@ -125,7 +125,7 @@ func (fs *PathNodeFs) Node(name string) *nodefs.Inode {
 	return n
 }
 
-// Like Node, but use Lookup to discover inodes we may not have yet.
+// LookupNode: Like Node, but use Lookup to discover inodes we may not have yet.
 func (fs *PathNodeFs) LookupNode(name string) *nodefs.Inode {
 	return fs.connector.LookupNode(fs.Root().Inode(), name)
 }

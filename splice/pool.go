@@ -37,7 +37,7 @@ func Done(p *Pair) {
 	splicePool.done(p)
 }
 
-// Closes and discards pipe pair.
+// Drop: Closes and discards pipe pair.
 func Drop(p *Pair) {
 	splicePool.drop(p)
 }

@@ -1026,7 +1026,7 @@ func (fs *unionFsFile) InnerFile() (file nodefs.File) {
 	return fs.File
 }
 
-// We can't hook on Release. Release has no response, so it is not
+// Flush: We can't hook on Release. Release has no response, so it is not
 // ordered wrt any following calls.
 func (fs *unionFsFile) Flush() (code fuse.Status) {
 	code = fs.File.Flush()
